@@ -4,9 +4,12 @@ import com.consumer.kafka.kafkaconsuemer.biz.IConsumeDataBiz;
 import com.consumer.kafka.kafkaconsuemer.dto.VegieConsumeDto;
 import com.consumer.kafka.kafkaconsuemer.model.ConsumerVeggie;
 import com.consumer.kafka.kafkaconsuemer.repository.ConsumerVeggieRepository;
+import com.consumer.kafka.kafkaconsuemer.utils.JsonUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class ConsumeDataBiz implements IConsumeDataBiz {
 
@@ -22,5 +25,6 @@ public class ConsumeDataBiz implements IConsumeDataBiz {
         consumerVeggie.setVegetableId(vegieConsumeDto.getVegetableId());
         consumerVeggie.setTimestamp(vegieConsumeDto.getTimestamp());
         consumerVeggieRepository.save(consumerVeggie);
+        log.info(" sava to db consume veggie {}: ", JsonUtils.toJson(consumerVeggie));
     }
 }

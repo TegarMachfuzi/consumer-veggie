@@ -1,6 +1,6 @@
 package com.consumer.kafka.kafkaconsuemer.consume.kafkahelper;
 
-public interface IKafkaHelperMessageReceive<T> {
+public interface IKafkaHelperMessageReceive<String> {
 
-    void receive(T message);
+    void receive(String message);
 }
